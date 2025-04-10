@@ -29,7 +29,11 @@ public class Book {
     public boolean getisAvailable() {
         return isAvailable;
     }
-    // Book(){};
+    
+
+    public void setAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
     @Override
     public String toString() {
         return String.format("%-20s%-30s%-20s%-20s%-20s",id,title,author,genre,isbn,isAvailable);
