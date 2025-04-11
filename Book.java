@@ -1,19 +1,14 @@
 public class Book {
-    private String id,title,author,genre,isbn;
+    private String title,author,genre,isbn;
     private boolean isAvailable = true;
 
-    Book(String id,String title,String author,String genre,String isbn){
-        this.id = id;
+    Book(String title,String author,String genre,String isbn){
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.isbn = isbn;
     }
-    public String getId()
-    {
-        return id;
-    }
-    
+
     public String getTitle() {
         return title;
     }
@@ -36,6 +31,6 @@ public class Book {
     }
     @Override
     public String toString() {
-        return String.format("%-20s%-30s%-20s%-20s%-20s",id,title,author,genre,isbn,isAvailable);
+        return String.format("%-30s%-20s%-20s%-20s",title,author,genre,isbn,isAvailable);
     }
 }

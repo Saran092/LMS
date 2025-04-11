@@ -1,7 +1,7 @@
 import java.util.*;
 public class User {
     private String userId,name,userType;
-    private List<String> borrowedBooks;
+    private List<Book> borrowedBooks;
 
     public User() {
     }
@@ -30,18 +30,18 @@ public class User {
         return String.format("%-20s%-20s%-20s",userId,name,userType);
     }
 
-    public List<String> getBorrowedBooks() {
+    public List<Book> getBorrowedBooks() {
         return borrowedBooks;
     }
     
-    public void addBorrowBook(String id)
+    public void addBorrowBook(Book obj)
     {
-        borrowedBooks.add(id);
+        borrowedBooks.add(obj);
     }
 
-    public void removeBorrowBook(String id)
+    public void removeBorrowBook(Book obj)
     {
-        borrowedBooks.remove(id);
+        borrowedBooks.remove(obj);
     }
     
 }
