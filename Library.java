@@ -3,8 +3,13 @@ class Library{
 
     private Map<String,Book> books = new TreeMap<>();
     private Map<String,User> users = new TreeMap<>();
-    private Map<User,List<Book>> borrow = new HashMap<>();
+    private Map<User,List<Book>> borrow = new TreeMap<>();
 
+    public String getName(String id)
+    {
+        User user = users.get(id);
+        return user.getName();
+    }
     // 👇 Book
 
     public void addBook(Book obj)
@@ -45,7 +50,7 @@ class Library{
     }
     public void displayBook()
     {
-        System.out.printf("%-30s%-20s%-20s%-20s\n","Title","Author","Genre","ISDN","Availability");
+        System.out.printf("%-30s%-30s%-30s%-20s\n","Title","Author","Genre","ISDN");
         for (Map.Entry<String, Book> ent : books.entrySet()){
             Book value = ent.getValue();
             System.out.println(value.toString());
@@ -106,7 +111,7 @@ class Library{
         User user = users.get(userId);
         if(!book.getisAvailable())
         {
-            System.out.println("Book is not currently Available");
+            System.out.println("Book already borrowed");
             return;
         }
         book.setAvailable(false);
@@ -143,12 +148,14 @@ class Library{
 
         book.setAvailable(true);
         users.get(userId).removeBorrowBook(book);
-        borrow.remove(user);
+        if(user.getBorrowedBooks().isEmpty())
+            borrow.remove(user);
         System.out.println("Book Return by User: "+user.getName());
     }
 
     public void displayBorrow()
     {
+        System.out.printf("%-30s%-30s%-30s%-20s\n","Title","Author","Genre","ISBN");
         for(Map.Entry<User,List<Book>> element : borrow.entrySet())
         {
             User user = element.getKey();
@@ -159,5 +166,63 @@ class Library{
                 System.out.println(el);
             }
         }
+    }
+
+    // 👇 Secarch
+    public void searchAuthor(String author)
+    {
+        boolean check = false;
+        for(Map.Entry<String,Book> elm : books.entrySet())
+        {
+            Book value = elm.getValue();
+            if(value.getAuthor().toLowerCase().contains(author.toLowerCase()))
+            {
+                if(!check)
+                    System.out.printf("%-30s%-30s%-30s%-20s%-20s\n","Title","Author","Genre","ISBN","Available");
+                System.out.print(value);
+                availableBook(value.getTitle());
+                check= true;
+            }
+        }
+        if(!check)
+            System.out.println("No Author'S Book is available in the library");
+    }
+
+    public void searchGenre(String genre)
+    {
+        boolean check = false;
+        for(Map.Entry<String,Book> elm : books.entrySet())
+        {
+            Book value = elm.getValue();
+            if(value.getGenre().toLowerCase().contains(genre.toLowerCase()))
+            {
+                if(!check)
+                    System.out.printf("%-30s%-30s%-30s%-20s%-20s\n","Title","Author","Genre","ISBN","Available");
+                System.out.print(value);
+                availableBook(value.getTitle());
+                check= true;
+            }
+        }
+        if(!check)
+            System.out.println("No Genreis available in the library");
+    }
+
+    public void searchTitle(String title)
+    {
+        boolean check = false;
+        for(Map.Entry<String,Book> elm : books.entrySet())
+        {
+            Book value = elm.getValue();
+            if(value.getTitle().toLowerCase().contains(title.toLowerCase()))
+            {
+                if(!check)
+                    System.out.printf("%-30s%-30s%-30s%-20s%-20s\n","Title","Author","Genre","ISBN","Available");
+                    System.out.print(value);
+                    availableBook(value.getTitle());
+                    check= true;
+            }
+        }
+        if(!check)
+            System.out.println("No Title available in the library");
     }
 }

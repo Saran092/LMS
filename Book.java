@@ -31,6 +31,6 @@ public class Book {
     }
     @Override
     public String toString() {
-        return String.format("%-30s%-20s%-20s%-20s",title,author,genre,isbn,isAvailable);
+        return String.format("%-30s%-30s%-30s%-20s",title,author,genre,isbn);
     }
 }

@@ -1,9 +1,13 @@
 import java.util.*;
-public class User {
+public class User implements Comparable<User>{
     private String userId,name,userType;
     private List<Book> borrowedBooks;
 
-    public User() {
+    // public User() {
+    // }
+    public int compareTo(User obj)
+    {
+        return this.userId.compareTo(obj.userId);
     }
 
     public User(String userId, String name, String userType) {
