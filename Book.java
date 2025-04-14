@@ -8,6 +8,7 @@ public class Book {
         this.genre = genre;
         this.isbn = isbn;
     }
+    //👇 Getters
 
     public String getTitle() {
         return title;
@@ -25,10 +26,10 @@ public class Book {
         return isAvailable;
     }
     
-
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
+
     @Override
     public String toString() {
         return String.format("%-30s%-30s%-30s%-20s",title,author,genre,isbn);
