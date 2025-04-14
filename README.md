@@ -16,7 +16,6 @@ This project is a console-based application designed to manage a library's opera
  - View reservation status for unavailable books.
 
 # Usage
-
 1. Launch the application and choose between the Admin Panel or User Panel.
 2. Follow the on-screen instructions to access features like adding books, borrowing books, searching, etc.
 ## Admin credentials:
